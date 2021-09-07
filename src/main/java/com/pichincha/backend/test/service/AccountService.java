@@ -66,7 +66,7 @@ public class AccountService {
 
 		Optional<Account> account = accountRepository.findById(newTransactionDto.getAccountId());
 
-		if (account.isEmpty())
+		if (!account.isPresent())
 			return null;
 		Transaction result=null;
 		TransactionDto transactionDto = new TransactionDto();
