@@ -8,18 +8,18 @@ public class TransactionDto {
 
 	@JsonProperty("id")
 	private Long id;
-
 	
 	@JsonProperty("dt1")
-	private String comment = "";
+	private String comment;
 
 	@JsonProperty("dt2")
-	private String type = "";
+	private String type;
 
 	@JsonProperty("elements")
 	private AccountDto account;
 
-	private LocalDateTime creationDate = LocalDateTime.now();
+	@JsonProperty("ddt1")
+	private LocalDateTime creationDate  = LocalDateTime.now();
 	
 
 

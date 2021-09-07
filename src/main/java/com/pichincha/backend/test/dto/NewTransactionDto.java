@@ -15,6 +15,7 @@ public class NewTransactionDto {
 	@JsonProperty("dt2")
 	private String comment;
 
+	@JsonProperty("ddt1")
 	private LocalDateTime creationDate = LocalDateTime.now();
 
 	@JsonProperty("ndt1")

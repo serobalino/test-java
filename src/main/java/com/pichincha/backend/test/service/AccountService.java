@@ -67,7 +67,7 @@ public class AccountService {
 		Optional<Account> account = accountRepository.findById(newTransactionDto.getAccountId());
 
 		if (!account.isPresent())
-			return null;
+			return (long)0;
 		Transaction result=null;
 		TransactionDto transactionDto = new TransactionDto();
 		transactionDto.setAccount(convertToDtoAccount(account.get()));
