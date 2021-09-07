@@ -27,7 +27,7 @@ public class AccountController {
 		this.aService = accountService;
 	}
 
-	@GetMapping("/{id}/transaction")
+	@GetMapping("/{id}/transactions")
 	public ResponseEntity<?> transactionId(@PathVariable Long id) throws ParseException {
 
 		Set<TransactionDto> result = accountService.getTransactionsForAccount(id);
@@ -40,7 +40,7 @@ public class AccountController {
 		return aService.getAccount(id);
 	}
 
-	@PostMapping("/{id}/transaction")
+	@PostMapping("/{id}/transactions")
 	public ResponseEntity<?> transactionCreate(@PathVariable Long id,
 			@Valid @RequestBody NewTransactionDto transactionDto) throws ParseException {
 		
