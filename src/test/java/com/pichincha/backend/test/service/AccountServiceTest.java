@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -62,7 +63,7 @@ public class AccountServiceTest {
 		Account account = createTestAccount();
 
 		NewTransactionDto transaction = new NewTransactionDto();
-		transaction.setAccountId(account.getId());
+		transaction.setId(account.getId());
 		transaction.setType("Type");
 		transaction.setComment("Comment");
 		Long transactionId = accountService.addTransaction(transaction);
@@ -85,16 +86,16 @@ public class AccountServiceTest {
 		Account account = createTestAccount();
 
 		NewTransactionDto transaction = new NewTransactionDto();
-		transaction.setAccountId(account.getId());
+		transaction.setId(account.getId());
 		transaction.setType("Type");
 		transaction.setComment("Comment");
 
 		accountService.addTransaction(transaction);
 
-		List<TransactionDto> transactions = accountService.getTransactionsForAccount(account.getId());
+		Set<TransactionDto> transactions = accountService.getTransactionsForAccount(account.getId());
 
 		assertThat("There should be one transaction", transactions, hasSize(1));
-		assertThat(transactions.get(0).getType(), Matchers.equalTo("Type"));
-		assertThat(transactions.get(0).getComment(), Matchers.equalTo("Comment"));
+		assertThat(transactions.stream().findFirst().get().getType(), Matchers.equalTo("Type"));
+		assertThat(transactions.stream().findFirst().get(), Matchers.equalTo("Comment"));
 	}
 }

@@ -7,7 +7,9 @@ import org.springframework.http.MediaType;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -25,7 +27,7 @@ public class TransactionControllerTest extends AbstractControllerTest {
 	public void shouldReturnFoundTransactions() throws Exception {
 
 		// given
-		List<TransactionDto> transactions = new ArrayList<>();
+		Set<TransactionDto> transactions = new HashSet<>();
 		LocalDateTime creationDate = LocalDateTime.of(2018, 5, 20, 20, 51, 16);
 		transactions.add(new TransactionDto(2L, "July payment", "Credit card payment", creationDate));
 

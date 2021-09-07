@@ -3,6 +3,7 @@ package com.pichincha.backend.test.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 public class Account {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String number;
@@ -18,7 +19,7 @@ public class Account {
 	@Column(length = 70)
 	private String type;
 
-	private LocalDateTime creationDate;
+	private LocalDateTime creationDate = LocalDateTime.now();
 
 	public String getNumber() {
 		return number;
@@ -46,6 +47,10 @@ public class Account {
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }
